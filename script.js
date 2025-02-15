@@ -3,7 +3,7 @@ let rs, speed, interval, fr
 const n = 20
 
 function lexicon(num=code.value) {
-    fetch("lexicon.json")
+    fetch("https://cdn.jsdelivr.net/gh/GreyBeard42/conway@main/lexicon.json")
     .then(file => data = file.json())
     .then(data => {
         grid = data[num].txt
