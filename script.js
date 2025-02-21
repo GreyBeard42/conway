@@ -31,7 +31,7 @@ function lexicon(num=code.value) {
             grid[y] = s.split("")
             y++
         })
-        rs=width/grid.length/2
+        rs=window.innerWidth/grid.length/2
     })
 }
 
