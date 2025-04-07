@@ -15,6 +15,9 @@ On each step, each cell dies, comes alive, or stays alive.
  - A live cell with more than 3 neighbors dies.
  - A dead cell with *exactly* 3 neighbors comes alive.
 
+### Learn more in my video!
+[The Zero-Player Game Played by No One - Youtube](https://youtu.be/3C1ZTNv64fY?si=Izqx_dOq3-aVt4vC)
+
 # More screenshots
 ![image1](image1.png)
 
