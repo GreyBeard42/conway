@@ -1,0 +1,15 @@
+{
+  "title": "Conway's Game of Life",
+  "desc": "Conway's Game of Life using p5.js.",
+
+  "status": "archived",
+  "version": "v1",
+
+  "date": "2/9/2025",
+
+  "tags": [
+    "javascript",
+    "p5.js",
+    "tinker"
+  ]
+}
