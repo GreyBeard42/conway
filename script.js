@@ -2,42 +2,42 @@ let grid = []
 let rs, speed, interval, fr
 const n = 20
 
-function lexicon(num=code.value) {
-    fetch("lexicon.json")
-    .then(file => data = file.json())
-    .then(data => {
-        grid = data[num].txt
-        slider.value = data[num].speed
-        clearInterval(interval)
-        if(slider.value != 0) interval = setInterval(tick, (10-slider.value)*100)
-    })
-    .then(() => {
-        let i = 0
-        grid.forEach((g) => {
-            if(typeof g === "object") g = grid[i][0]
-            else g = grid[i]
-            grid[i] = g
-            for(z=0; z<n; z++) grid[i] = "."+grid[i]+"."
-            i++
+async function lexicon(num=code.value) {
+    await fetch("lexicon.json")
+        .then(file => data = file.json())
+        .then(data => {
+            grid = data[num].txt
+            slider.value = data[num].speed
+            clearInterval(interval)
+            if(slider.value != 0) interval = setInterval(tick, (10-slider.value)*100)
         })
-        let temp = ""
-        for(z=0; z<(grid[0].length); z++) temp+="."
-        for(z=0; z<n; z++) {
-            grid.unshift(temp)
-            grid.push(temp)
-        }
-        let y = 0
-        grid.forEach((s) => {
-            grid[y] = s.split("")
-            y++
+        .then(() => {
+            let i = 0
+            grid.forEach((g) => {
+                if(typeof g === "object") g = grid[i][0]
+                else g = grid[i]
+                grid[i] = g
+                for(z=0; z<n; z++) grid[i] = "."+grid[i]+"."
+                i++
+            })
+            let temp = ""
+            for(z=0; z<(grid[0].length); z++) temp+="."
+            for(z=0; z<n; z++) {
+                grid.unshift(temp)
+                grid.push(temp)
+            }
+            let y = 0
+            grid.forEach((s) => {
+                grid[y] = s.split("")
+                y++
+            })
+            rs=window.innerWidth/grid.length/2
         })
-        rs=window.innerWidth/grid.length/2
-    })
 }
 
-lexicon()
 
-function setup() {
+async function setup() {
+    await lexicon()
     let cnvs = createCanvas(windowWidth, windowHeight)
     cnvs.parent("canvas")
     textAlign(LEFT, BOTTOM)
@@ -60,6 +60,7 @@ code.addEventListener("input", () => {
 
 function draw() {
     background(0)
+    if(!grid.length) return
 
     fill("white")
     if(frameCount%10===0) fr = frameRate()
